@@ -1,18 +1,25 @@
 {
-  // https://nuxt.com/docs/guide/concepts/typescript
+  "compilerOptions": {
+    "baseUrl": "./",  // Set base path for module resolution to the root directory.
+    "paths": {
+      "@/*": [
+        "app/*"  // This sets up the alias `@` to resolve to the `app/` folder.
+      ]
+    }
+  },
   "files": [],
   "references": [
     {
-      "path": "./.nuxt/tsconfig.app.json"
+      "path": "./.nuxt/tsconfig.app.json"  // Reference to Nuxt app config.
     },
     {
-      "path": "./.nuxt/tsconfig.server.json"
+      "path": "./.nuxt/tsconfig.server.json"  // Reference to Nuxt server config.
     },
     {
-      "path": "./.nuxt/tsconfig.shared.json"
+      "path": "./.nuxt/tsconfig.shared.json"  // Reference to shared config for both client and server.
     },
     {
-      "path": "./.nuxt/tsconfig.node.json"
+      "path": "./.nuxt/tsconfig.node.json"  // Reference to Node.js-specific TypeScript config.
     }
   ]
 }

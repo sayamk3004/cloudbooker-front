@@ -38,7 +38,8 @@
 </template>
 
 <script setup lang="ts">
-import ProfessionalCard from '~/components/ProfessionalCard.vue'
+import ProfessionalCard from '~/../components/ProfessionalCard.vue'
+import { useApi } from '~/../composables/useApi'
 
 const q = ref('')
 const location = ref('')

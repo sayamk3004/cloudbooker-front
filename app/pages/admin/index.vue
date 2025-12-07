@@ -37,9 +37,9 @@
 </template>
 
 <script setup lang="ts">
-definePageMeta({
-  middleware: ['auth', 'role']
-})
+  import { useApi } from '~/../composables/useApi'
+
+
 
 const loading = ref(false)
 const stats = ref<any>({

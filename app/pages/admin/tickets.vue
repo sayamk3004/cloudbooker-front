@@ -49,9 +49,9 @@
 </template>
 
 <script setup lang="ts">
-definePageMeta({
-  middleware: ['auth', 'role']
-})
+  import { useApi } from '~/../composables/useApi'
+
+
 
 const tickets = ref<any[]>([])
 const loading = ref(false)

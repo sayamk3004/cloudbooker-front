@@ -34,6 +34,10 @@
 </template>
 
 <script setup lang="ts">
+  import { useApi } from '~/../composables/useApi'
+
+  import { useAuthStore } from '~/../stores/auth'
+
 const props = defineProps<{ professionalId: number }>()
 const slots = ref<string[]>([])
 const selected = ref<string | null>(null)
@@ -65,28 +69,28 @@ const selectSlot = (slot: string) => {
 }
 
 const book = async () => {
-  if (!auth.isAuthenticated) {
-    navigateTo('/auth/login')
-    return
-  }
   if (!selected.value) return
   booking.value = true
   message.value = ''
   try {
-    const res: any = await request('/appointments/book', {
+    const res = await request('/appointments/book', {
       method: 'POST',
       body: {
         professional_id: props.professionalId,
         datetime: selected.value.replace('T', ' ').slice(0, 19)
       }
     })
+
     message.value = res.message || 'Appointment booked. Proceed to payment.'
-  } catch (e: any) {
+
+    window.location.href = res.payment_url // Redirect to SSLCommerz payment URL
+  } catch (e) {
     message.value = 'Unable to book this slot'
   } finally {
     booking.value = false
   }
 }
+
 
 onMounted(() => {
   loadSlots()

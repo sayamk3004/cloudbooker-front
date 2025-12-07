@@ -11,8 +11,9 @@
         {{ professional.location || 'No location set' }}
       </div>
     </div>
+
     <NuxtLink
-      :to="`/professionals/${professional.id}`"
+      :to="`/professionals/${professional.id ?? professional.user_id}`"
       class="text-sm text-blue-600"
     >
       View profile
